@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a class="btn" href="{% url 'habit_create'%}">Add habit</a>
+    <div class="container row">
+        {%for habit in habits%}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{habit.user.username}}</h5>
+                <h5 class="card-title">{{habit.name}}</h5>
+                <p class="card-text">{{habit.description}}</p>
+                <p>Completed ? : {{habit.is_completed}}</p>
+                
+                <a href="{% url 'habit_edit' habit.id %}" class="btn">Edit</a>
+                <a href="{% url 'habit_delete' habit.id %}" class="btn">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>
